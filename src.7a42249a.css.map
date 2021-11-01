@@ -1,0 +1,1 @@
+{"version":3,"sources":["sass/_example.scss"],"names":[],"mappings":"AAAA,IACE,aAAA,CACA,UAAA,CACA","file":"src.7a42249a.css","sourceRoot":"../src","sourcesContent":["img {\n  display: block;\n  width: 100%;\n  height: auto;\n}\n"]}
