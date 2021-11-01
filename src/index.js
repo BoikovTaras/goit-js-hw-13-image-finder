@@ -3,51 +3,46 @@ import searchImage from'./js/apiService.js'
 // Отрисовываем инпут на страницу
 import inputArea from './partials/input.hbs';
 import pictureList from './partials/imagesList.hbs';
+import debounce from 'lodash.debounce';
+
+let pageNum = 1;
+let searchQuery = '';
 
 const inArea = document.querySelector('.input_box');
 inArea.innerHTML = inputArea();
 
-// Добавляем слушателя к инпуту
 const inputWindow = document.querySelector('.search-form');
 const galleryBox = document.querySelector('.gallery_box');
+const loadMoreBtn = document.querySelector('.button');
 
-inputWindow.addEventListener('submit', searchImg);
 
 
-function searchImg(e) {
-    e.preventDefault();
 
-    const form = e.currentTarget;
-    const searchQuery = form.elements.query.value;
 
-    searchImage(searchQuery)
+
+const searchImg = e => {
+    searchQuery = e.target.value;
+    pageNum = 1;
+
+    searchImage(searchQuery, pageNum)
         .then(response => {
             return response.json()
         })
         .then(image => {
-            // console.log(image);
             const marckup = pictureList(image);
-            console.log(marckup);
             galleryBox.innerHTML = marckup;
 
         })
         .catch(error => {
+            console.log('404');
             console.log(error);
         })
 };
-// const inputText = inputWindow.addEventListener('input', (e) => {
-//     const it = searchBtn.addEventListener('click', (txt) => {
-//         searchImage(e.target.value)
-//     .then(response => {
-//         return response.json();
-//     })
-//     .then(image => {
-//         return image;
-//     })
-//     .catch(error => {
-//         console.log(error);
-//     })
 
-//     });
-    
-// });
+const loadMore = e => {
+    pageNum ++;
+    searchImg();
+};
+
+inputWindow.addEventListener('input', debounce(searchImg, 1000));
+loadMoreBtn.addEventListener('click', loadMore);
