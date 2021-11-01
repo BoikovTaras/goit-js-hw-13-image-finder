@@ -9,6 +9,7 @@ inArea.innerHTML = inputArea();
 
 // Добавляем слушателя к инпуту
 const inputWindow = document.querySelector('.search-form');
+const galleryBox = document.querySelector('.gallery_box');
 
 inputWindow.addEventListener('submit', searchImg);
 
@@ -24,9 +25,11 @@ function searchImg(e) {
             return response.json()
         })
         .then(image => {
-            return image;
+            // console.log(image);
             const marckup = pictureList(image);
             console.log(marckup);
+            galleryBox.innerHTML = marckup;
+
         })
         .catch(error => {
             console.log(error);
