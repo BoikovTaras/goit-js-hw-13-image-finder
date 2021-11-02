@@ -15,7 +15,15 @@ const inputWindow = document.querySelector('.search-form');
 const galleryBox = document.querySelector('.gallery_box');
 const loadMoreBtn = document.querySelector('.button');
 
+// const getIp = async () => {
+//     let response = await searchImage(searchQuery, pageNum);
+//     let imageIp = await response.json();
 
+//     const marckup = imageIp.this.map(pictureList).join('');
+
+//     galleryBox.insertAdjacentHTML('beforeend', marckup);
+
+// };
 
 
 
@@ -29,8 +37,8 @@ const searchImg = e => {
             return response.json()
         })
         .then(image => {
-            const marckup = pictureList(image);
-            galleryBox.innerHTML = marckup;
+        const marckup = pictureList(image);
+        galleryBox.innerHTML = marckup; 
 
         })
         .catch(error => {
