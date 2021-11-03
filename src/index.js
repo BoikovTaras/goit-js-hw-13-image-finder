@@ -25,13 +25,7 @@ const loadMoreBtn = document.querySelector('.button');
 
 // };
 
-
-
-
-const searchImg = e => {
-    searchQuery = e.target.value;
-    pageNum = 1;
-
+function getImg() {
     searchImage(searchQuery, pageNum)
         .then(response => {
             return response.json()
@@ -45,11 +39,20 @@ const searchImg = e => {
             console.log('404');
             console.log(error);
         })
+}
+
+
+const searchImg = e => {
+    searchQuery = e.target.value;
+    pageNum = 1;
+
+    getImg()
+    
 };
 
 const loadMore = e => {
     pageNum ++;
-    searchImg();
+    getImg();
 };
 
 inputWindow.addEventListener('input', debounce(searchImg, 1000));
