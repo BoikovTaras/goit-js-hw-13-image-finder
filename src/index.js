@@ -1,6 +1,5 @@
 import './sass/main.scss';
 import searchImage from'./js/apiService.js'
-// // Отрисовываем инпут на страницу
 import inputArea from './partials/input.hbs';
 import pictureList from './partials/imagesList.hbs';
 import debounce from 'lodash.debounce';
@@ -12,18 +11,8 @@ const inArea = document.querySelector('.input_box');
 inArea.innerHTML = inputArea();
 
 const inputWindow = document.querySelector('.search-form');
-const galleryBox = document.querySelector('.gallery_box');
+const galleryBox = document.querySelector('.gallery');
 const loadMoreBtn = document.querySelector('.button');
-
-// const getIp = async () => {
-//     let response = await searchImage(searchQuery, pageNum);
-//     let imageIp = await response.json();
-
-//     const marckup = imageIp.this.map(pictureList).join('');
-
-//     galleryBox.insertAdjacentHTML('beforeend', marckup);
-
-// };
 
 function getImg() {
     searchImage(searchQuery, pageNum)
@@ -32,8 +21,7 @@ function getImg() {
         })
         .then(image => {
         const marckup = pictureList(image);
-        galleryBox.innerHTML = marckup; 
-
+        galleryBox.insertAdjacentHTML('beforeend', marckup); 
         })
         .catch(error => {
             console.log('404');
@@ -41,12 +29,17 @@ function getImg() {
         })
 }
 
-
 const searchImg = e => {
+    galleryBox.innerHTML = '';
     searchQuery = e.target.value;
     pageNum = 1;
 
-    getImg()
+    if (searchQuery.length > 0) {
+    getImg();
+    loadMoreBtn.classList.remove('is_hidden');
+  } else {
+    loadMoreBtn.classList.add('is_hidden');
+  }
     
 };
 

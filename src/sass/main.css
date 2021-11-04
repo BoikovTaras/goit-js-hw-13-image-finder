@@ -3,9 +3,109 @@
  * Главный файл стилей.
  * Все паршалы подключаются сюда.
  */
-img {
-  display: block;
-  width: 100%;
-  height: auto;
+body {
+  padding: 40px 50px;
+  background-color: #ccedfa;
+}
+
+.title {
+  text-align: center;
+  color: #5f130d;
+}
+
+.img {
+  margin-bottom: 10px;
+}
+
+.img:hover {
+  -webkit-transform: scale(1.1);
+          transform: scale(1.1);
+  cursor: pointer;
+}
+
+.photos_box {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  text-align: center;
+}
+
+.photo-card {
+  margin-bottom: 10px;
+  width: 640px;
+  height: 550px;
+}
+
+.input_box {
+  text-align: center;
+  margin-bottom: 25px;
+}
+
+.input_box:hover, .input_box:focus {
+  outline: none;
+}
+
+.input_box::-webkit-input-placeholder {
+  font-size: 18px;
+  color: darkslategray;
+}
+
+.input_box:-ms-input-placeholder {
+  font-size: 18px;
+  color: darkslategray;
+}
+
+.input_box::-ms-input-placeholder {
+  font-size: 18px;
+  color: darkslategray;
+}
+
+.input_box::placeholder {
+  font-size: 18px;
+  color: darkslategray;
+}
+
+.search-area {
+  fill: rbg(204, 237, 250);
+}
+
+.gallery {
+  padding: 0;
+}
+
+.stats {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.stats-item {
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  margin-right: 15px;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.stats-item-box {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.is_hidden {
+  display: none;
 }
 /*# sourceMappingURL=main.css.map */
