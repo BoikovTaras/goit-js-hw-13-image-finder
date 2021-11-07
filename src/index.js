@@ -1,5 +1,5 @@
 import './sass/main.scss';
-import searchImage from'./js/apiService.js'
+import searchImage from './js/apiService.js'
 import inputArea from './partials/input.hbs';
 import pictureList from './partials/imagesList.hbs';
 import debounce from 'lodash.debounce';
